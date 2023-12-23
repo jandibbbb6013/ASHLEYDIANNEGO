@@ -327,3 +327,18 @@
 
 })(document, window);
 
+document.addEventListener('DOMContentLoaded', function () {
+    var currentStep = 0;
+    var totalSteps = document.querySelectorAll('.step').length;
+
+    document.addEventListener('touchstart', function () {
+        if (currentStep < totalSteps - 1) {
+            currentStep++;
+        } else {
+            currentStep = 0;
+        }
+
+        impress().goto(currentStep);
+    });
+});
+
