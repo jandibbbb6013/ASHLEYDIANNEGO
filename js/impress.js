@@ -30,6 +30,10 @@
 
     })();
 
+    document.addEventListener("touchstart", function () {
+        selectNext();
+    }, false);
+
     var arrayify = function ( a ) {
         return [].slice.call( a );
     };
