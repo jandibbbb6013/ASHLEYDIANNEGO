@@ -290,30 +290,6 @@
             event.preventDefault();
         }
     }, false);
-
-    document.addEventListener("click", function ( event ) {
-        // event delegation with "bubbling"
-        // check if event target (or any of its parents is a link or a step)
-        var target = event.target;
-        while ( (target.tagName != "A") &&
-                (!target.stepData) &&
-                (target != document.body) ) {
-            target = target.parentNode;
-        }
-        
-        if ( target.tagName == "A" ) {
-            var href = target.getAttribute("href");
-            
-            // if it's a link to presentation step, target this step
-            if ( href && href[0] == '#' ) {
-                target = byId( href.slice(1) );
-            }
-        }
-        
-        if ( select(target) ) {
-            event.preventDefault();
-        }
-    }, false);
     
     var getElementFromUrl = function () {
         // get id from url # by removing `#` or `#/` from the beginning,
@@ -330,6 +306,3 @@
     select(getElementFromUrl() || steps[0]);
 
 })(document, window);
-
-
-
